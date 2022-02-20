@@ -4,7 +4,7 @@ use shader_try::fibonachi;
 use rayon::prelude::*;
 
 fn main() {
-    let top = 2_u128.pow(10);
+    let top = 2_u128.pow(8);
     let src_range = 1..top;
     let start = Instant::now();
     let result = src_range
@@ -13,7 +13,7 @@ fn main() {
         .map(fibonachi)
         .collect::<Vec<_>>();
     let took = start.elapsed();
-    let mut max = 0;
+    /*let mut max = 0;
     for (src, out) in src_range.zip(result.iter().copied()) {
         match out {
             Some(out) if out > max => {
@@ -26,8 +26,9 @@ fn main() {
                 break;
             }
         }
-    }
+    }*/
     println!("Took: {:?}", took);
+    let ttt = took;
     let start = Instant::now();
     for _ in 0..2_u128.pow(8) {
         let mut a = 1;
@@ -37,5 +38,5 @@ fn main() {
     }
     let took = start.elapsed();
     println!("Took: {:?}", took);
-
+    println!("code performs better in : {:?} times", took.as_millis() as f32 / ttt.as_millis() as f32);
 }
