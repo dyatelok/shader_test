@@ -33,8 +33,9 @@ pub fn fibonachi(n: u128) -> Option<u128> {
     for _ in 0..1000000 {
         a += 1;
     }
-    if n > 20 {return None;}
-    Some(n.pow(10))
+    None
+    //if n > 20 {return None;}
+    //Some(n.pow(10))
 }
 
 pub fn collatz(mut n: u32) -> Option<u32> {
